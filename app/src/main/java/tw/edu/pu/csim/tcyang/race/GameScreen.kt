@@ -53,16 +53,18 @@ fun GameScreen(message: String, gameViewModel: GameViewModel) {
                 center = Offset(gameViewModel.circleX, gameViewModel.circleY)
             )
 
-            drawImage(
-                image = imageBitmaps[gameViewModel.horse.number],
-                dstOffset = IntOffset(gameViewModel.horse.horseX, gameViewModel.horse.horseY),
-                dstSize = IntSize(300, 300)
-            )
+            for (i in 0..2){
+                drawImage(
+                    image = imageBitmaps[gameViewModel.horses[i].number],
+                    dstOffset = IntOffset(gameViewModel.horses[i].horseX, gameViewModel.horses[i].horseY),
+                    dstSize = IntSize(300, 300)
+                )
+            }
+
         }
 
 
-        Text(text = message + gameViewModel.screenWidthPx.toString() + "*"
-                + gameViewModel.screenHeightPx.toString())
+        Text(text = "Horse Racing Game: Brian Shih")
 
         Button(onClick = {gameViewModel.gameRunning = true
             gameViewModel.StartGame()

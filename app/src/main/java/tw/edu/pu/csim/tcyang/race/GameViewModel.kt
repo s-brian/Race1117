@@ -28,9 +28,14 @@ class GameViewModel: ViewModel() {
     fun SetGameSize(w: Float, h: Float) {
         screenWidthPx = w
         screenHeightPx = h
+
+        for (i in 0..2 ){
+            horses.add(Horse(i))
+        }
     }
 
-    val horse = Horse()
+//    val horse = Horse()
+    val horses = mutableListOf<Horse>()
     fun StartGame() {
         //回到初使位置
         circleX = 100f
@@ -41,12 +46,14 @@ class GameViewModel: ViewModel() {
                 delay(100)
                 circleX += 10
 
-                if (circleX >= screenWidthPx - 100){
-                    circleX = 100f
-                }
-                horse.Run()
-                if(horse.horseX >= screenWidthPx - 300){
-                    horse.horseX = 0
+                for (i in 0..2) {
+                    if (circleX >= screenWidthPx - 100) {
+                        circleX = 100f
+                    }
+                    horses[i].Run()
+                    if (horses[i].horseX >= screenWidthPx - 300) {
+                        horses[i].horseX = 0
+                    }
                 }
             }
         }
