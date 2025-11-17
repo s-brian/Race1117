@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import tw.edu.pu.csim.tcyang.race.ui.theme.Horse
 
 class GameViewModel: ViewModel() {
 
@@ -29,6 +30,7 @@ class GameViewModel: ViewModel() {
         screenHeightPx = h
     }
 
+    val horse = Horse()
     fun StartGame() {
         //回到初使位置
         circleX = 100f
@@ -41,6 +43,10 @@ class GameViewModel: ViewModel() {
 
                 if (circleX >= screenWidthPx - 100){
                     circleX = 100f
+                }
+                horse.Run()
+                if(horse.horseX >= screenWidthPx - 300){
+                    horse.horseX = 0
                 }
             }
         }
