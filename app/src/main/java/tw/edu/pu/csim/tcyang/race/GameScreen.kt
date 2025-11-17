@@ -4,6 +4,7 @@ import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
@@ -62,15 +63,20 @@ fun GameScreen(message: String, gameViewModel: GameViewModel) {
             }
 
         }
+        val winner = gameViewModel.winner
 
-
-        Text(text = "Horse Racing Game: Brian Shih")
-
-        Button(onClick = {gameViewModel.gameRunning = true
-            gameViewModel.StartGame()
+        Row {
+            Button(onClick = {gameViewModel.gameRunning = true
+                gameViewModel.StartGame()
+            }
+            ){
+                Text("Start")
+            }
+            Text(text = "Horse Racing Game: Brian Shih     ")
+            Text(text = winner)
         }
-        ){
-           Text("遊戲開始")
-        }
+
+
+
     }
 }

@@ -34,7 +34,7 @@ class GameViewModel: ViewModel() {
         }
     }
 
-//    val horse = Horse()
+    var winner by mutableStateOf("")
     val horses = mutableListOf<Horse>()
     fun StartGame() {
         //回到初使位置
@@ -53,6 +53,10 @@ class GameViewModel: ViewModel() {
                     horses[i].Run()
                     if (horses[i].horseX >= screenWidthPx - 300) {
                         horses[i].horseX = 0
+                        horses[0].horseX = 0
+                        horses[1].horseX = 0
+                        horses[2].horseX = 0
+                        winner = "Horse " + (i + 1) + " has won the game!"
                     }
                 }
             }
